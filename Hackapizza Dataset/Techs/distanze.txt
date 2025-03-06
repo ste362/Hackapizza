@@ -1,0 +1,180 @@
+La distanza tra il pianeta Tatooine e il pianeta Asgard è di 695 anni luce
+
+La distanza tra il pianeta Tatooine e il pianeta Namecc è di 641 anni luce
+
+La distanza tra il pianeta Tatooine e il pianeta Arrakis è di 109 anni luce
+
+La distanza tra il pianeta Tatooine e il pianeta Krypton è di 661 anni luce
+
+La distanza tra il pianeta Tatooine e il pianeta Pandora è di 1130 anni luce
+
+La distanza tra il pianeta Tatooine e il pianeta Cybertron è di 344 anni luce
+
+La distanza tra il pianeta Tatooine e il pianeta Ego è di 835 anni luce
+
+La distanza tra il pianeta Tatooine e il pianeta Montressosr è di 731 anni luce
+
+La distanza tra il pianeta Tatooine e il pianeta Klyntar è di 530 anni luce
+
+La distanza tra il pianeta Asgard e il pianeta Tatooine è di 695 anni luce
+
+La distanza tra il pianeta Asgard e il pianeta Namecc è di 550 anni luce
+
+La distanza tra il pianeta Asgard e il pianeta Arrakis è di 781 anni luce
+
+La distanza tra il pianeta Asgard e il pianeta Krypton è di 188 anni luce
+
+La distanza tra il pianeta Asgard e il pianeta Pandora è di 473 anni luce
+
+La distanza tra il pianeta Asgard e il pianeta Cybertron è di 493 anni luce
+
+La distanza tra il pianeta Asgard e il pianeta Ego è di 156 anni luce
+
+La distanza tra il pianeta Asgard e il pianeta Montressosr è di 240 anni luce
+
+La distanza tra il pianeta Asgard e il pianeta Klyntar è di 479 anni luce
+
+La distanza tra il pianeta Namecc e il pianeta Tatooine è di 641 anni luce
+
+La distanza tra il pianeta Namecc e il pianeta Asgard è di 550 anni luce
+
+La distanza tra il pianeta Namecc e il pianeta Arrakis è di 651 anni luce
+
+La distanza tra il pianeta Namecc e il pianeta Krypton è di 367 anni luce
+
+La distanza tra il pianeta Namecc e il pianeta Pandora è di 987 anni luce
+
+La distanza tra il pianeta Namecc e il pianeta Cybertron è di 728 anni luce
+
+La distanza tra il pianeta Namecc e il pianeta Ego è di 688 anni luce
+
+La distanza tra il pianeta Namecc e il pianeta Montressosr è di 767 anni luce
+
+La distanza tra il pianeta Namecc e il pianeta Klyntar è di 845 anni luce
+
+La distanza tra il pianeta Arrakis e il pianeta Tatooine è di 109 anni luce
+
+La distanza tra il pianeta Arrakis e il pianeta Asgard è di 781 anni luce
+
+La distanza tra il pianeta Arrakis e il pianeta Namecc è di 651 anni luce
+
+La distanza tra il pianeta Arrakis e il pianeta Krypton è di 727 anni luce
+
+La distanza tra il pianeta Arrakis e il pianeta Pandora è di 1227 anni luce
+
+La distanza tra il pianeta Arrakis e il pianeta Cybertron è di 454 anni luce
+
+La distanza tra il pianeta Arrakis e il pianeta Ego è di 926 anni luce
+
+La distanza tra il pianeta Arrakis e il pianeta Montressosr è di 834 anni luce
+
+La distanza tra il pianeta Arrakis e il pianeta Klyntar è di 640 anni luce
+
+La distanza tra il pianeta Krypton e il pianeta Tatooine è di 661 anni luce
+
+La distanza tra il pianeta Krypton e il pianeta Asgard è di 188 anni luce
+
+La distanza tra il pianeta Krypton e il pianeta Namecc è di 367 anni luce
+
+La distanza tra il pianeta Krypton e il pianeta Arrakis è di 727 anni luce
+
+La distanza tra il pianeta Krypton e il pianeta Pandora è di 626 anni luce
+
+La distanza tra il pianeta Krypton e il pianeta Cybertron è di 557 anni luce
+
+La distanza tra il pianeta Krypton e il pianeta Ego è di 321 anni luce
+
+La distanza tra il pianeta Krypton e il pianeta Montressosr è di 422 anni luce
+
+La distanza tra il pianeta Krypton e il pianeta Klyntar è di 599 anni luce
+
+La distanza tra il pianeta Pandora e il pianeta Tatooine è di 1130 anni luce
+
+La distanza tra il pianeta Pandora e il pianeta Asgard è di 473 anni luce
+
+La distanza tra il pianeta Pandora e il pianeta Namecc è di 987 anni luce
+
+La distanza tra il pianeta Pandora e il pianeta Arrakis è di 1227 anni luce
+
+La distanza tra il pianeta Pandora e il pianeta Krypton è di 626 anni luce
+
+La distanza tra il pianeta Pandora e il pianeta Cybertron è di 847 anni luce
+
+La distanza tra il pianeta Pandora e il pianeta Ego è di 317 anni luce
+
+La distanza tra il pianeta Pandora e il pianeta Montressosr è di 413 anni luce
+
+La distanza tra il pianeta Pandora e il pianeta Klyntar è di 731 anni luce
+
+La distanza tra il pianeta Cybertron e il pianeta Tatooine è di 344 anni luce
+
+La distanza tra il pianeta Cybertron e il pianeta Asgard è di 493 anni luce
+
+La distanza tra il pianeta Cybertron e il pianeta Namecc è di 728 anni luce
+
+La distanza tra il pianeta Cybertron e il pianeta Arrakis è di 454 anni luce
+
+La distanza tra il pianeta Cybertron e il pianeta Krypton è di 557 anni luce
+
+La distanza tra il pianeta Cybertron e il pianeta Pandora è di 847 anni luce
+
+La distanza tra il pianeta Cybertron e il pianeta Ego è di 594 anni luce
+
+La distanza tra il pianeta Cybertron e il pianeta Montressosr è di 434 anni luce
+
+La distanza tra il pianeta Cybertron e il pianeta Klyntar è di 186 anni luce
+
+La distanza tra il pianeta Ego e il pianeta Tatooine è di 835 anni luce
+
+La distanza tra il pianeta Ego e il pianeta Asgard è di 156 anni luce
+
+La distanza tra il pianeta Ego e il pianeta Namecc è di 688 anni luce
+
+La distanza tra il pianeta Ego e il pianeta Arrakis è di 926 anni luce
+
+La distanza tra il pianeta Ego e il pianeta Krypton è di 321 anni luce
+
+La distanza tra il pianeta Ego e il pianeta Pandora è di 317 anni luce
+
+La distanza tra il pianeta Ego e il pianeta Cybertron è di 594 anni luce
+
+La distanza tra il pianeta Ego e il pianeta Montressosr è di 215 anni luce
+
+La distanza tra il pianeta Ego e il pianeta Klyntar è di 532 anni luce
+
+La distanza tra il pianeta Montressosr e il pianeta Tatooine è di 731 anni luce
+
+La distanza tra il pianeta Montressosr e il pianeta Asgard è di 240 anni luce
+
+La distanza tra il pianeta Montressosr e il pianeta Namecc è di 767 anni luce
+
+La distanza tra il pianeta Montressosr e il pianeta Arrakis è di 834 anni luce
+
+La distanza tra il pianeta Montressosr e il pianeta Krypton è di 422 anni luce
+
+La distanza tra il pianeta Montressosr e il pianeta Pandora è di 413 anni luce
+
+La distanza tra il pianeta Montressosr e il pianeta Cybertron è di 434 anni luce
+
+La distanza tra il pianeta Montressosr e il pianeta Ego è di 215 anni luce
+
+La distanza tra il pianeta Montressosr e il pianeta Klyntar è di 331 anni luce
+
+La distanza tra il pianeta Klyntar e il pianeta Tatooine è di 530 anni luce
+
+La distanza tra il pianeta Klyntar e il pianeta Asgard è di 479 anni luce
+
+La distanza tra il pianeta Klyntar e il pianeta Namecc è di 845 anni luce
+
+La distanza tra il pianeta Klyntar e il pianeta Arrakis è di 640 anni luce
+
+La distanza tra il pianeta Klyntar e il pianeta Krypton è di 599 anni luce
+
+La distanza tra il pianeta Klyntar e il pianeta Pandora è di 731 anni luce
+
+La distanza tra il pianeta Klyntar e il pianeta Cybertron è di 186 anni luce
+
+La distanza tra il pianeta Klyntar e il pianeta Ego è di 532 anni luce
+
+La distanza tra il pianeta Klyntar e il pianeta Montressosr è di 331 anni luce
+
