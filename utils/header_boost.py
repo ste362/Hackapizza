@@ -115,3 +115,4 @@ for doc in menu_paths:
     with open(doc, "w") as f:
         f.write(file)
 
+

@@ -1,9 +1,4 @@
-import json
-import os
 import re
-
-from langchain_community.document_loaders import TextLoader
-from langchain_core.documents import Document
 
 
 class BooleanQueryParser:
@@ -57,14 +52,13 @@ class BooleanQueryParser:
 
 
 
+
 # # Esempio di utilizzo:
 #query = ("Testa di idra AND (True OR NOT (True AND False))")
 #booleanQuery = BooleanQueryParser(query).tokens
 #print(booleanQuery)
 # parser = BooleanQueryParser(query)
 # parsed_tree = parser.parse()
-
-
 
 
 
@@ -132,3 +126,4 @@ def boolean_searcher(query,doc_splits, lower=True,header=False):
 #     print(doc.metadata)
 #     print(doc.page_content)
 #     print("\n##############################################################################################\n")
+

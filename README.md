@@ -3,8 +3,9 @@
 ## Overview
 
 This project was developed for the **Hackapizza Kaggle Competition** by **Stefano Iannicelli** and **Ettore Caputo**.  
-The goal? To create a super-smart solution for **context-aware question answering** using **structured menu data** .  
+The goal? To create a smart solution for **context-aware question answering** using **structured menu data** .  
 We focused on **efficient token usage**, **precise data extraction**, and **multi-phase query processing** .
+
 
 ## 🔑 Key Features
 
@@ -34,21 +35,6 @@ We focused on **efficient token usage**, **precise data extraction**, and **mult
 2. **🛠️ Query Reformulation** – Turns them into boolean expressions  
 3. **🧠 Expert Activation** – Different experts handle their part of the query  
 4. **📚 Boolean Search** – Finds the matching data  
-5. **🍽️ Final Answer Extraction** – Grabs dish names straight from the filtered content  
+5. **🍽️ Final Answer Extraction** – Grabs dish names straight from the filtered content
 
-## 📊 Results
-
-| 🧪 Configuration        | 🎯 Score (%) |
-|------------------------|-------------|
-| **Menu Expert Only**   | 63.5        |
-| **+ Distance Expert**  | 66.7        |
-| **+ Tech Expert**      | 76.5        |
-
-## 🧩 Challenges & 🚀 Future Improvements
-
-- **📐 Rigid Boolean Model** – Very structured queries; even small keyword slips can cause issues 
-- **🧠 Tech Expert Optimization** – Currently sends the whole *Galactic Code* to the LLM. Switching to chunk-based retrieval could save tons of tokens!
-
----
-
-📄 Want more details? Check out the **project PDF**! Thanks for reading! 🙌
+📄 Want more details? Check out the **Bytebusters_presentazione.pdf**! Thanks for reading! 🙌
