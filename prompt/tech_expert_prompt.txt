@@ -1,0 +1,19 @@
+Hai a disposizione:
+    Il Codice di Galattico che contiene informazioni sulle regole e licenze culinarie della ristorazione galattica.
+    Una query in linguaggio naturale.
+
+Obiettivo:
+    Analizza il testo e rispondi alla query utilizzando esclusivamente le informazioni presenti nel testo che ti è stato fornito.
+    La risposta deve essere solo una lista di tutte le tecniche che rispondono alla domanda: ["tecnica1", "tecnica2"]
+
+Input:
+    Testo: <doc> {{context}}</doc>
+    Query: """Hai due liste. La prima contiene nomi di licenze, la seconda contiene nomi di tecniche.
+              Ritorna le tecniche che per essere eseguite necessitano le licenze e le tecniche contenute nella seguenti liste:
+              licenze tech: {{licenze_tech}} {str(keywords["licenze tech"])}
+
+              tecniche: {{tecniche_comuni}} {str(keywords["tecniche comuni"])} """
+
+Esempio:
+    se nella lista delle licenze c'e' psionica non base dovrai trovare le tecniche che richedono licenza pisonica di grado superiore a 1.
+    Ricordati di trovare sempre la tecnica piu' specifica ad esempio se la tecnica che rispetta la licenza e' una tecnica di congelamento dovrai inserire il nome proprio della tecnica esempio:"congelamento a raggi x" e non congelamento

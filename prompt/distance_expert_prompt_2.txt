@@ -1,0 +1,3 @@
+Riscrivi la seguente query escludendo la parte relativa alle distanze e aggiungi, al suo interno, la risposta con le distanze dei pianeti.
+Query: "{{ question }}"
+Lista dei pianeti da integrare: {{planet_ok}}

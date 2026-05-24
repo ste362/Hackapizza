@@ -1,10 +1,10 @@
 """
 Menu Corpus Expert Node - Retrieves dish information from menu content.
 """
+from langchain_core.messages import HumanMessage
 
 from utils.boolean_query import BooleanQueryParser, boolean_searcher
-from .config import llm, doc_splits
-from .menu_header_expert import prompt_boolean_search
+from .config import llm, doc_splits, load_prompt
 
 
 def ask_to_menu_corpus_expert(state):
@@ -25,7 +25,12 @@ def ask_to_menu_corpus_expert(state):
             selected_keywords.extend(keywords["ingredienti"])
             print(selected_keywords)
 
-            prompt = prompt_boolean_search.format(question=question, selected_keywords=selected_keywords)
+            # load the designated prompt for boolean query generation
+            prompt = load_prompt(
+                "boolean_query_prompt.txt",
+                question=question,
+                selected_keywords=selected_keywords,
+            )
             response = llm.invoke(prompt)
 
             start = response.content.find("[")

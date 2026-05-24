@@ -82,7 +82,7 @@ print(f"Graph saved as 'graph.png' in {os.getcwd()}")
 
 
 queries = []
-with open("Hackapizza Dataset/domande.csv", "r") as f:
+with open("Hackapizza Dataset/domande.csv", "r", encoding="utf-8") as f:
     reader = csv.reader(f)
     for row in reader:
         queries.append(row[0])

@@ -1,56 +1,131 @@
-"""
-Shared configuration and resources for graph nodes.
-"""
-
 import json
 import os
 import re
+from pathlib import Path
+from jinja2 import Environment, FileSystemLoader
 from langchain_openai import ChatOpenAI
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import TextLoader
 from langchain_core.documents import Document
 
-# Initialize LLM
+
+# =========================
+# JINJA2 ENVIRONMENT
+# =========================
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+PROMPT_DIR = BASE_DIR / "prompt"
+
+jinja_env = Environment(
+    loader=FileSystemLoader(PROMPT_DIR),
+    autoescape=False,
+)
+
+
+def load_prompt(template_name: str, **kwargs) -> str:
+    """
+    Load and render a Jinja2 prompt template.
+    """
+    template = jinja_env.get_template(template_name)
+    return template.render(**kwargs)
+
+
+# =========================
+# INITIALIZE LLM
+# =========================
+
 llm = ChatOpenAI(
     model="gpt-4o",
     temperature=0,
     max_tokens=None,
     timeout=None,
     max_retries=0,
-    api_key="KEY",
+    api_key="",
 )
 
-# Load data paths
+
+# =========================
+# LOAD DATA PATHS
+# =========================
+
 menu_paths = [
-    os.path.join("Hackapizza Dataset/Menu_Final_txt", path) for path in os.listdir("Hackapizza Dataset/Menu_Final_txt") if path.endswith(".txt")
+    os.path.join("Hackapizza Dataset/Menu_Final_txt", path)
+    for path in os.listdir("Hackapizza Dataset/Menu_Final_txt")
+    if path.endswith(".txt")
 ]
+
 technical_paths = [
     "Hackapizza Dataset/Techs/Codice Galattico.txt",
 ]
 
-# Load distance file
-dist_file = open("Hackapizza Dataset/Techs/distanze.txt", "r").read()
 
-# Load dish mapping
+# =========================
+# LOAD FILES
+# =========================
+
+dist_file = open(
+    "Hackapizza Dataset/Techs/distanze.txt",
+    "r",
+    encoding="utf-8"
+).read()
+
 dish_mapping_path = "Hackapizza Dataset/Misc/dish_mapping.json"
-with open(dish_mapping_path, "r") as f:
+
+with open(dish_mapping_path, "r", encoding="utf-8") as f:
     dish_mapping = json.load(f)
 
-# Load documents with UTF-8 encoding
-menu_docs = [TextLoader(path, encoding='utf-8').load() for path in menu_paths]
-menu_docs_list = [item for sublist in menu_docs for item in sublist]
-tech_docs = [TextLoader(path, encoding='utf-8').load() for path in technical_paths]
-tech_docs_list = [item for sublist in tech_docs for item in sublist]
 
-# Text splitter configuration
+# =========================
+# LOAD DOCUMENTS
+# =========================
+
+menu_docs = [
+    TextLoader(path, encoding="utf-8").load()
+    for path in menu_paths
+]
+
+menu_docs_list = [item for sublist in menu_docs for item in sublist]
+
+tech_docs = [
+    TextLoader(path, encoding="utf-8").load()
+    for path in technical_paths
+]
+
+tech_docs_list = [
+    item
+    for sublist in tech_docs
+    for item in sublist
+]
+
+
+# =========================
+# TEXT SPLITTER
+# =========================
+
 text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
-    chunk_size=200, chunk_overlap=20
+    chunk_size=200,
+    chunk_overlap=20,
 )
 
-# Helper functions
+
+# =========================
+# HELPERS
+# =========================
+
 def roman_to_int(roman: str) -> int:
     """Convert Roman numeral to integer."""
-    roman_values = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+
+    roman_values = {
+        "I": 1,
+        "V": 5,
+        "X": 10,
+        "L": 50,
+        "C": 100,
+        "D": 500,
+        "M": 1000,
+    }
+
     total = 0
     prev_value = 0
 
@@ -70,26 +145,55 @@ def replace_roman_numerals(doc: Document) -> str:
 
     def replacement(match):
         roman_numeral = match.group()
-        if roman_numeral == "I" and (match.start() == 0 or text[match.start() - 2] in {'.', '!', '?'}):
+
+        if roman_numeral == "I" and (
+            match.start() == 0
+            or text[match.start() - 2] in {".", "!", "?"}
+        ):
             return roman_numeral
         return str(roman_to_int(roman_numeral))
 
-    pattern = r"(?<![\w'])(M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3}))(?![\w'])"
+    pattern = (
+        r"(?<![\w'])"
+        r"(M{0,4}(CM|CD|D?C{0,3})"
+        r"(XC|XL|L?X{0,3})"
+        r"(IX|IV|V?I{0,3}))"
+        r"(?![\w'])"
+    )
+
     return re.sub(pattern, replacement, text)
 
 def dish_labeler(text: str):
     """Label dish names with tags."""
-    for dish in sorted(dish_mapping.keys(), key=lambda k: len(k), reverse=True):
+
+    for dish in sorted(
+        dish_mapping.keys(),
+        key=lambda k: len(k),
+        reverse=True
+    ):
+
         text = text.replace(
-            dish, f"<dish>{dish}</dish>", -1
+            dish,
+            f"<dish>{dish}</dish>",
+            -1
         )
     return text
 
 def dish_labeler_doc_with_underscore(doc):
     """Label dish names in document with underscores."""
-    for dish in sorted(dish_mapping.keys(), key=lambda k: len(k), reverse=True):
+
+    for dish in sorted(
+        dish_mapping.keys(),
+        key=lambda k: len(k),
+        reverse=True
+    ):
+
+        dish_with_underscore = dish.replace(" ", "_")
+
         doc.page_content = doc.page_content.replace(
-            dish, f"<dish>{dish.replace(" ", "_")}</dish>", -1
+            dish,
+            f"<dish>{dish_with_underscore}</dish>",
+            -1
         )
     return doc
 
@@ -107,20 +211,46 @@ def my_splitter(menu_docs_list):
         start = 0
         for _, end in list_pos:
             if start < end:
-                doc_splits.append(Document(metadata={"id": id}, page_content=doc.page_content[start:end]))
+
+                doc_splits.append(
+                    Document(
+                        metadata={"id": id},
+                        page_content=doc.page_content[start:end]
+                    )
+                )
+
                 start = end
-        doc_splits.append(Document(metadata={"id": id}, page_content=doc.page_content[start:]))
+
+        doc_splits.append(
+            Document(
+                metadata={"id": id},
+                page_content=doc.page_content[start:]
+            )
+        )
 
     return doc_splits
 
-# Process documents
-doc_splits = my_splitter(menu_docs_list)
-tech_doc_splits = text_splitter.split_documents(tech_docs_list)
 
-# Validate splits
+# =========================
+# PROCESS DOCUMENTS
+# =========================
+
+doc_splits = my_splitter(menu_docs_list)
+
+tech_doc_splits = text_splitter.split_documents(
+    tech_docs_list
+)
+
 assert all([len(doc.page_content) > 0 for doc in doc_splits])
+
 assert all([len(doc.page_content) > 0 for doc in tech_doc_splits])
 
-# Label dish names
-doc_splits = [dish_labeler_doc_with_underscore(doc) for doc in doc_splits]
-tech_doc_splits = [dish_labeler_doc_with_underscore(doc) for doc in tech_doc_splits]
+doc_splits = [
+    dish_labeler_doc_with_underscore(doc)
+    for doc in doc_splits
+]
+
+tech_doc_splits = [
+    dish_labeler_doc_with_underscore(doc)
+    for doc in tech_doc_splits
+]

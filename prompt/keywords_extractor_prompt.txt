@@ -1,0 +1,94 @@
+Dividi la seguente domanda in keyword, categorizzandole secondo le seguenti etichette:
+
+licenze chef: nomi delle licenze che si riferiscono agli chef presenti nella domanda.
+licenze tech: nomi delle licenze che si riferiscono a tecniche o ingredienti presenti nella domanda da ricercare nel manuale di cucina Sirius Cosmo.
+pianeti: nomi dei pianeti presenti nella domanda.
+ingredienti: nomi degli ingredienti presenti nella domanda.
+tecniche galattiche: nomi propri delle tecniche menzionate nella domanda, generalmente scritte con iniziale maiuscola.
+tecniche comuni: nomi comuni di tecniche menzionate nella domanda, generalmente scritte in minuscolo, spesso correlate al manuale Sirius Cosmo o al Codice Galattico.
+chef: nomi degli chef presenti nella domanda.
+ristoranti: nomi dei ristoranti presenti nella domanda.
+abilità: nomi delle abilità (specialmente se collegate al contesto dello chef).
+
+Requisiti:
+
+Output: Il risultato finale DEVE essere un JSON con la seguente struttura:
+
+    {
+      "licenze chef": [ ... ],
+      "licenze tech": [ ... ],
+      "pianeti": [ ... ],
+      "ingredienti": [ ... ],
+      "tecniche galattiche": [ ... ],
+      "tecniche comuni": [ ... ],
+      "chef": [ ... ],
+      "ristoranti": [ ... ]
+    }
+
+Integrità: Non modificare le keyword estratte; riportale esattamente come compaiono nella domanda.
+Formato delle keyword: Le keyword sono nomi propri che iniziano sempre con la lettera maiuscola. Non includere keyword che iniziano con la lettera minuscola.
+Caratteri speciali: Le keyword possono essere nomi inventati e contenere simboli speciali (escluso il carattere "?").
+Casi contestuali:
+    Se una keyword è preceduta dalla frase "sono preparati", allora appartiene alla categoria tecniche galattiche o comuni.
+    Se una keyword è preceduta da "richiedono", allora appartiene alla categoria licenze.
+    Se una keyword è correlata al contesto dello chef (ad esempio, descrive le sue licenze), allora va inserita nella categoria licenze chef(riservando la categoria chef ai nomi propri degli chef).
+    Codice di Galattiche e Sirius Cosmo non devono essere keyword.
+    Nelle licenze chef scrivi solo il nome della licenza senza il grado.
+
+
+Esempio 1:
+    Domanda: "Quali piatti, che necessitano almeno della licenza Psionica di grado 2 per essere preparati, serviti in un ristorante su Pandora, utilizzano Spore Quantiche, preparati tramite la tecnica di Vaporizzazione dallo chef Cannavacciuolo nel ristorante La Valle delle Lacrime?"
+    Output atteso:
+        {
+          "licenze chef": [],
+          "licenze tech": ["Psionica 2"],
+          "pianeti": ["Pandora"],
+          "ingredienti": ["Spore Quantiche"],
+          "tecniche galattiche": ["Vaporizzazione"],
+          "tecniche comuni": [],
+          "chef": ["Cannavacciuolo"],
+          "ristoranti": ["La Valle delle Lacrime"]
+        }
+Esempio 2:
+    Domanda: "Quali piatti, preparati da chef con licenza Psionica di grado 2, serviti in un ristorante su Pandora, utilizzano Spore Quantiche?"
+    Output atteso:
+        {
+          "licenze chef": ["Psionica"],
+          "licenze tech": [],
+          "pianeti": ["Pandora"],
+          "ingredienti": ["Spore Quantiche"],
+          "tecniche galattiche": [],
+          "tecniche comuni": [],
+          "chef": [],
+          "ristoranti": []
+        }
+
+Esempio 3:
+    Domanda: "Quali piatti sono preparati utilizzando sia tecniche di impasto che di taglio, ma senza l'uso di Spore Quantiche?"
+    Output atteso:
+        {
+          "licenze chef": [],
+          "licenze tech": [],
+          "pianeti": [],
+          "ingredienti": ["Spore Quantiche"],
+          "tecniche galattiche": [],
+          "tecniche comuni": ["impasto", "taglio"],
+          "chef": [],
+          "ristoranti": []
+        }
+
+Esempio 4:
+    Domanda: "Quali piatti, che richiedono una licenza Ultra Istinto di grado 2, utilizzano Spore Quantiche?"
+    Output atteso:
+        {
+          "licenze chef": [],
+          "licenze tech": ["Ultra Istinto 2"],
+          "pianeti": [],
+          "ingredienti": ["Spore Quantiche"],
+          "tecniche galattiche": [],
+          "tecniche comuni": [],
+          "chef": [],
+          "ristoranti": []
+        }
+
+Domanda: "{{ question }}"

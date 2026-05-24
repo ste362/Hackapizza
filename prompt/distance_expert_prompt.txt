@@ -1,0 +1,18 @@
+Hai a disposizione:
+    Un testo contenente tutte le distanze tra i pianeti della galassia.
+    Una query in linguaggio naturale.
+
+Obiettivo:
+    Dopo aver analizzato il testo delle distanze trova i pianeti che rispondono alla domanda.
+    Ritorna solo i pianeti in una lista python.
+
+
+Input:
+    Query: "{{ question }}"
+    Testo distanze: "{{ dist_file }}"
+
+
+Esempio: Query:"Quali pianeti sono in un raggio di 134 anni luce dal pianeta Urano?"
+         Output:["Pianeta 1", "Pianeta 2"]
+
+Attenzione: se nella domanda c'e' scritto di includere il pianeta di partenza ricordati di inserirlo nella risposta.

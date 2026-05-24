@@ -3,7 +3,7 @@ Tech Expert Node - Retrieves technical information from the technical documents.
 """
 
 from langchain_core.messages import HumanMessage
-from .config import llm, tech_docs
+from .config import llm, tech_docs, load_prompt
 
 
 def ask_to_tech_expert(state):
@@ -19,39 +19,16 @@ def ask_to_tech_expert(state):
     try:
         if keywords["licenze tech"] or keywords["tecniche comuni"]:
 
-            query_rewrited = f"""Hai due liste. La prima contiene nomi di licenze, la seconda contiene nomi di tecniche. 
-                                    Ritorna le tecniche che per essere eseguite necessitano le licenze e le tecniche contenute nella seguenti liste:
-                                    licenze tech: {str(keywords["licenze tech"])}
-                                    tecniche: {str(keywords["tecniche comuni"])}"""
-
             doc = tech_docs[0]
 
-            rag_tech_prompt = """
-            Hai a disposizione:
-                Il Codice di Galattico che contiene informazioni sulle regole e licenze culinarie della ristorazione galattica.
-                Una query in linguaggio naturale.
-
-            Obiettivo:
-                Analizza il testo e rispondi alla query utilizzando esclusivamente le informazioni presenti nel testo che ti è stato fornito.
-                La risposta deve essere solo una lista di tutte le tecniche che rispondono alla domanda: ["tecnica1", "tecnica2"]
-
-            Input:
-                Testo: {context}
-                Query: {query}
-
-
-            Esempio:
-                se nella lista delle licenze c'e' psionica non base dovrai trovare le tecniche che richedono licenza pisonica di grado superiore a 1.
-                Ricordati di trovare sempre la tecnica piu' specifica ad esempio se la tecnica che rispetta la licenza e' una tecnica di congelamento dovrai inserire il nome proprio della tecnica esempio:"congelamento a raggi x" e non congelamento
-
-            """
-
-            formatted_rag_prompt = rag_tech_prompt.format(
-                context=doc,
-                query=query_rewrited
+            prompt = load_prompt(
+                "tech_expert_prompt.txt",
+                context = doc,
+                licenze_tech = str(keywords["licenze tech"]),
+                tecniche_comuni = str(keywords["tecniche comuni"])
             )
 
-            response = llm.invoke([HumanMessage(content=formatted_rag_prompt)])
+            response = llm.invoke(prompt)
             start = response.content.find("[")
             end = response.content.rfind("]")
 
@@ -60,13 +37,14 @@ def ask_to_tech_expert(state):
             print(tech_retrieved)
 
             if tech_retrieved:
-                response = llm.invoke(
-                    f"""Riscrivi la query seguente eliminando solo i riferimenti alle licenze o alle tecniche. All'interno della nella nuova query, integra le tecniche che richiedono licenze.
-                            Ricorda che il signicato della query deve rimanere invariato.
-                            Inoltre se nella domanda e' presente di Sirius Cosmo eliminalo.
+                prompt = load_prompt(
+                    "tech_expert_prompt_2.txt",
+                    context=doc,
+                    question=question,
+                    tech_retrieved=tech_retrieved
+                )
+                response = llm.invoke(prompt)
 
-                            Query: "{question}"
-                            Lista delle tecniche da integrare: {tech_retrieved}""")
                 start = response.content.find('"')
                 end = response.content.rfind('"')
                 question = response.content[start + 1:end]

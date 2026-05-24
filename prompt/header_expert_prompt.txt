@@ -1,0 +1,5 @@
+Dati in input una query e un dizionario nel formato ristorante_id -> [informazioni ristorante], restituisci una lista contenente esclusivamente gli ID dei ristoranti in cui i gradi delle licenze degli chef soddisfano i requisiti specificati nella query.
+    Query: {{ question }}
+    Dizionario: {{ dict_menu_headers }}
+
+Restituisci solo la lista degli ID tra il token $, ad esempio:  $[1, 5, 6]$

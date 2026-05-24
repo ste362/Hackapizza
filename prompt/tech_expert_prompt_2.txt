@@ -1,0 +1,6 @@
+Riscrivi la query seguente eliminando solo i riferimenti alle licenze o alle tecniche. All'interno della nuova query, integra le tecniche che richiedono licenze.
+Ricorda che il signicato della query deve rimanere invariato.
+Inoltre se nella domanda e' presente di Sirius Cosmo eliminalo.
+
+Query: "{{ question }}"
+Lista delle tecniche da integrare: {{ tech_retrieved }}

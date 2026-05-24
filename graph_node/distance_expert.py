@@ -1,8 +1,9 @@
 """
 Distance Expert Node - Retrieves distance information between planets.
 """
+from langchain_core.messages import HumanMessage
 
-from .config import llm, dist_file
+from .config import llm, dist_file, load_prompt
 
 
 def ask_to_distance_expert(state):
@@ -23,27 +24,11 @@ def ask_to_distance_expert(state):
             if not selected_keywords:
                 return {"planet_distance_answer": []}
 
-            prompt = f"""
-            Hai a disposizione:
-                Un testo contenente tutte le distanze tra i pianeti della galassia.
-                Una query in linguaggio naturale.
-
-            Obiettivo:
-                Dopo aver analizzato il testo delle distanze trova i pianeti che rispondono alla domanda.
-                Ritorna solo i pianeti in una lista python.
-                
-                
-            Input:
-                Query: "{question}"
-                Testo distanze: "{dist_file}"
-                
-            
-            Esempio: Query:"Quali pianeti sono in un raggio di 134 anni luce dal pianeta Urano?"
-                     Output:["Pianeta 1", "Pianeta 2"]
-                     
-            Attenzione: se nella domanda c'e' scritto di includere il pianeta di partenza ricordati di inserirlo nella risposta.
-                
-            """
+            prompt = load_prompt(
+                "prompt/distance_expert_prompt.txt",
+                question=question,
+                dist_file=dist_file,
+            )
 
             response = llm.invoke(prompt)
 
@@ -53,7 +38,12 @@ def ask_to_distance_expert(state):
             print("Planet match: ", planet_ok)
 
             if planet_ok:
-                response = llm.invoke(f"""Riscrivi la seguente query escludendo la parte relativa alle distanze e aggiungi, al suo interno, la risposta con le distanze dei pianeti. Query: '{question}' Lista dei pianeti da integrare: {planet_ok}""")
+                prompt = load_prompt(
+                    "prompt/distance_expert_prompt.txt",
+                    question=question,
+                    planet_ok=planet_ok,
+                )
+                response = llm.invoke(prompt)
                 start = response.content.find('"')
                 end = response.content.rfind('"')
                 question = response.content[start + 1:end]

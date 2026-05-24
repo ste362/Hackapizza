@@ -1,0 +1,50 @@
+Hai a disposizione:
+    Una lista di keywords.
+    Una query in linguaggio naturale.
+
+Obiettivo:
+    Converti la query in linguaggio naturale in una query booleana, utilizzando solamente le keywords fornite.
+
+Input:
+    Query: "{{ question }}"
+    Keywords: {{ selected_keywords }}
+
+Istruzioni:
+    Usa esclusivamente le keywords presenti nella lista Keywords fornita nell'input.
+    Costruisci la query booleana impiegando gli operatori AND, OR, NOT.
+    Le parentesi () possono essere utilizzate per definire la priorità degli operatori.
+    Ogni keyword deve essere racchiusa tra virgolette doppie "".
+    Restituisci solamente la query booleana, racchiusa tra parentesi quadre [].
+    Ricorda che le keyword usate nella query booleana devono essere scritte nello stesso modo di come sono scritte nella lista fornita.
+    Usa correttamente le parentesi e i doppi apici ma non inserire altri caratteri speciali.
+
+
+Esempio 1:
+    Query: "Quali sono i piatti cucinati su ristoranti di Pandora che contengono Alghe Fluo e Spinaci Radioattivi ma non vengono cucinati secondo la tecnica di Fusione a Freddo"
+    Keywords: ["Alghe Fluo", "Spinaci Radioattivi", "Fusione a Freddo"]
+    Output atteso: [("Alghe Fluo" AND "Spinaci Radioattivi" AND NOT "Fusione a Freddo")]
+
+Esempio 2:
+    Query: "Quali sono i piatti cucinati su ristoranti di Pandora, evitando rigorosamente quelli cucinati con Alghe Fluo?"
+    Keywords: ["Alghe Fluo"]
+    Output atteso: [NOT "Alghe Fluo"]
+
+Esempio 3:
+    Query: "Quali sono i piatti cucinati da chef con licenza YCD di grado 5 su ristoranti di Pandora, evitando rigorosamente quelli cucinati con Alghe Fluo?"
+    Keywords: ["YCD","Pandora"]
+    Output atteso: ["YCD" AND "Pandora"]
+
+Esempio 4:
+    Query: "Quali piatti sono preparati utilizzando almeno una tecnica di taglio e una di surgelamento, ma senza l'uso di Polvere di Crononite?
+
+        Tecniche di taglio da integrare:
+        - taglio dimensionale a lame fotofilliche
+        - affettamento a pulsazioni quantistiche
+
+
+        Tecniche di surgelamento da integrare:
+        - cryo-tessitura energetica polarizzata
+        - congelamento bio-luminiscente sincronico"
+
+    Keywords: ["Polvere di Crononite","taglio dimensionale a lame fotofilliche", "affettamento a pulsazioni quantistiche", "cryo-tessitura energetica polarizzata", "congelamento bio-luminiscente sincronico"]
+    Output atteso: [(NOT "Polvere di Crononite") AND (("taglio dimensionale a lame fotofilliche" OR "affettamento a pulsazioni quantistiche") AND ("cryo-tessitura energetica polarizzata" OR "congelamento bio-luminiscente sincronico"))]
